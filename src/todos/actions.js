@@ -13,4 +13,11 @@ export const removeTodo = text => ({ //change to id later
     payload: { text }
 }); 
 
+export const COMPLETE_TODO = 'COMPLETE_TODO';
+ 
+export const completeTodo = text => ({ //change to id later
+    type: COMPLETE_TODO,
+    payload: { text }
+}); 
+
 //createTodo('example text');
