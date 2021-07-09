@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux'; //higher order function connect()()
+import { createTodo } from './actions';
 import './NewTodoForm.css';
 
-const NewTodoForm = () => {
+const NewTodoForm = ({ todos, onCreatePressed }) => {
     const [inputValue, setInputValue] = useState('');
     
     return (
@@ -12,10 +14,27 @@ const NewTodoForm = () => {
         placeholder="Type your new ToDo here."
         value={inputValue}
         onChange={e => setInputValue(e.target.value)} />
-        <button className="new-todo-button">Create Todo</button>
+        <button 
+         onClick={() => {
+            const isDuplicateText =
+                todos.some(todo => todo.text === inputValue);
+            if (!isDuplicateText) {
+                onCreatePressed(inputValue);
+                setInputValue('');
+            }
+        }}
+        className="new-todo-button">Create Todo</button>
     </div>
     );
 };
 
-export default NewTodoForm;
+const mapStateToProps = state => ({
+    todos: state.todos,
+}); //object state represents redux state and returns pieces of state that this component needs access to
+
+const mapDispatchToProps = dispatch => ({
+    onCreatePressed: text => dispatch(createTodo(text))
+}); //similar to above. Instead of redux state it takes dispatch (fxn that allows components to trigger actions that redux state will respond to). For example when someone clicks button
+
+export default connect(mapStateToProps,mapDispatchToProps)(NewTodoForm);
 
