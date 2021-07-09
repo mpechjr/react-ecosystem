@@ -1,0 +1,26 @@
+.todo-item-container {
+    box-shadow: rgba(71, 71, 71, 0.3) 1px 2px 4px 0px;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+button {
+    
+    border: none;
+    border-radius: 2px;  
+    cursor: pointer;
+    font-family: inherit; 
+    
+    overflow: hidden;
+    vertical-align: middle;
+     
+    padding: .2rem .8rem;
+    line-height: 2rem;
+    background-color: #1f769e;
+    color: #fff;
+    margin-left:1rem;
+}
+.delete-button {
+    background-color: #b62823;
+}
