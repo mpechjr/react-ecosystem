@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'; //higher order function connect()()
 import { addTodoRequest } from './thunks';
+
+import { getTodos }  from "./selectors";
 import './NewTodoForm.css';
 
 const NewTodoForm = ({ todos, onCreatePressed }) => {
@@ -29,7 +31,7 @@ const NewTodoForm = ({ todos, onCreatePressed }) => {
 };
 
 const mapStateToProps = state => ({
-    todos: state.todos,
+    todos: getTodos(state),
 }); //object state represents redux state and returns pieces of state that this component needs access to
 
 const mapDispatchToProps = dispatch => ({
