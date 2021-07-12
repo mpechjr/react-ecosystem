@@ -1,6 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+ 
+
+ export const getBorderSytleforDate = (startingDate, currentDate) => (startingDate > new Date(currentDate - 86400000 * 5) 
+ ? 'none' 
+ : '2px solid red');
+
+
 const TodoItemContainer = styled.div`
  
     box-shadow: rgba(71, 71, 71, 0.3) 1px 2px 4px 0px;
@@ -10,7 +17,8 @@ const TodoItemContainer = styled.div`
   
 `;
 const TodoItemContainerWithWarning = styled(TodoItemContainer)`
-border-bottom: ${props => (new Date(props.createdAt) > new Date(Date.now()-8640000 * 5 ) ? 'none': '2px solid #ff0000')}
+border-bottom: ${props => 
+    getBorderSytleforDate(new Date(props.createdAt), Date.now())}
 `;
 
 const Button = styled.button`

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'; //higher order function connect()()
 import { addTodoRequest } from './thunks';
 
 import { getTodos }  from "./selectors";
-import './NewTodoForm.css';
 
 const NewTodoForm = ({ todos, onCreatePressed }) => {
     const [inputValue, setInputValue] = useState('');
