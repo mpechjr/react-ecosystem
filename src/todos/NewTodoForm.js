@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'; //higher order function connect()()
-import { createTodo } from './actions';
+import { addTodoRequest } from './thunks';
 import './NewTodoForm.css';
 
 const NewTodoForm = ({ todos, onCreatePressed }) => {
@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
 }); //object state represents redux state and returns pieces of state that this component needs access to
 
 const mapDispatchToProps = dispatch => ({
-    onCreatePressed: text => dispatch(createTodo(text))
+    onCreatePressed: text => dispatch(addTodoRequest(text))
 }); //similar to above. Instead of redux state it takes dispatch (fxn that allows components to trigger actions that redux state will respond to). For example when someone clicks button
 
 export default connect(mapStateToProps,mapDispatchToProps)(NewTodoForm);
